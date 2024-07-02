@@ -2,9 +2,10 @@ package com.alura.foro.Modelo;
 
 import java.time.LocalDateTime;
 
-
+import com.alura.foro.Dto.DatosActualizarTopico;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -45,6 +46,16 @@ public class Topico {
         this.fechaCreacion=fechaHoraActual;
         this.estado="true";
         this.respuestas="nada";
+    }
+
+
+    public void actualizarDatos(@Valid DatosActualizarTopico datosActualizarTopico) {
+        if (datosActualizarTopico.titulo() != null) {
+            this.titulo = datosActualizarTopico.titulo();
+        }
+        if (datosActualizarTopico.mensaje() != null) {
+            this.mensaje = datosActualizarTopico.mensaje();
+        }
     }
 
 }

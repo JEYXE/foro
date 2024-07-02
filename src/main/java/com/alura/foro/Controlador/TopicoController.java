@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alura.foro.Dto.DatosActualizarTopico;
 import com.alura.foro.Dto.DatosDetalleTopico;
 import com.alura.foro.Dto.DatosListadoTopicos;
 import com.alura.foro.Dto.DatosRegistroTopico;
@@ -48,5 +50,13 @@ public class TopicoController {
         Topico topico = topicoRepository.getReferenceById(id);
         var datosTopico = new DatosDetalleTopico(topico);
         return ResponseEntity.ok(datosTopico);
+    }
+    @PutMapping
+    @Transactional
+    public ResponseEntity actualizarTopico(@RequestBody @Valid DatosActualizarTopico datosActualizarTopico) {
+        Topico topico = topicoRepository.getReferenceById(datosActualizarTopico.id());
+        topico.actualizarDatos(datosActualizarTopico);
+        return ResponseEntity.ok(new DatosActualizarTopico(topico.getId(), topico.getTitulo(), topico.getMensaje()
+                ));
     }
 }
