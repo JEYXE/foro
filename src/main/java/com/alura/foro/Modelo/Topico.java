@@ -1,9 +1,7 @@
 package com.alura.foro.Modelo;
 
 import java.time.LocalDateTime;
-
 import com.alura.foro.Dto.DatosActualizarTopico;
-
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -56,6 +54,11 @@ public class Topico {
         if (datosActualizarTopico.mensaje() != null) {
             this.mensaje = datosActualizarTopico.mensaje();
         }
+    }
+
+
+    public void desactivarMedico() {
+        this.estado="false";
     }
 
 }
