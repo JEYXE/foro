@@ -25,12 +25,9 @@ public class RegistroTopicoService {
     public DatosDetalleTopico publicarTopico(DatosRegistroTopico datoRegistroTopico){
 
         var autor = usuarioRepository.findById(datoRegistroTopico.idAutor()).get();
-
         var curso = cursoRepository.findById(datoRegistroTopico.idCurso()).get();
-
         var titulo= datoRegistroTopico.titulo();
         var mensaje= datoRegistroTopico.mensaje();
-
         LocalDateTime fechaHoraActual = LocalDateTime.now();
 
         var topico = new Topico(titulo,mensaje,autor,curso,fechaHoraActual);

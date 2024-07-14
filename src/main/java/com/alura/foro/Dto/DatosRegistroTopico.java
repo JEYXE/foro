@@ -10,9 +10,9 @@ public record DatosRegistroTopico(
         String titulo,
         @NotBlank
         String mensaje,
-        //@NotBlank
+        @NotBlank
         Long idAutor,
-        //@NotBlank
+        @NotBlank
         Long idCurso) {
 
 }

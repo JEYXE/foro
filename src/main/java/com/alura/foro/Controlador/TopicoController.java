@@ -36,7 +36,6 @@ public class TopicoController {
     @PostMapping
     @Transactional
     public ResponseEntity publicarTopico(@RequestBody @Valid DatosRegistroTopico datosRegistroTopico) {
-        System.out.println(datosRegistroTopico);
         var response = registroTopicoService.publicarTopico(datosRegistroTopico);
         return ResponseEntity.ok(response);
     }
